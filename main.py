@@ -1,16 +1,30 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+"""
+Author: Pawan Kumar Sharma
+This script converts text in morse code
+"""
 
 
-# Press the green button in the gutter to run the script.
+def convert_morse_code(user_input):
+    morse_code_dict = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+        'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+        'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..', ' ': ' '
+    }
+    morse_code_to_numbers_dict = {
+        '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+        '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+    }
+    final_text = []
+    for current_char in user_input:
+        if current_char.isdigit():
+            final_text.append(morse_code_to_numbers_dict[current_char.upper()])
+        else:
+            final_text.append(morse_code_dict[current_char.upper()])
+    complete_code = " ".join(final_text)
+    print(complete_code)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    user_input = input('Enter Your Text: ')
+    convert_morse_code(user_input)
